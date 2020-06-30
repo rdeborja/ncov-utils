@@ -100,7 +100,7 @@ def create_unique_amplicons(amplicons, offset=30):
             tmp_amplicon = [
                 amplicons[index][0],
                 amplicons[index][1],
-                str(int(amplicons[index+1][1]) - offset),
+                str(int(amplicons[index+1][1]) - int(offset)),
                 amplicons[index][3],
                 amplicons[index][4],
                 amplicons[index][5]
@@ -108,7 +108,7 @@ def create_unique_amplicons(amplicons, offset=30):
         elif index == len(amplicons)-1:
             tmp_amplicon = [
                 amplicons[index][0],
-                str(int(amplicons[index-1][2]) + offset),
+                str(int(amplicons[index-1][2]) + int(offset)),
                 amplicons[index][2],
                 amplicons[index][3],
                 amplicons[index][4],
@@ -117,8 +117,8 @@ def create_unique_amplicons(amplicons, offset=30):
         else:
             tmp_amplicon = [
                 amplicons[index][0],
-                str(int(amplicons[index-1][2]) + offset),
-                str(int(amplicons[index+1][1]) - offset),
+                str(int(amplicons[index-1][2]) + int(offset)),
+                str(int(amplicons[index+1][1]) - int(offset)),
                 amplicons[index][3],
                 amplicons[index][4],
                 amplicons[index][5]
