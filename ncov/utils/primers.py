@@ -64,7 +64,15 @@ def create_primer_pairs(primers, left='_LEFT', right='_RIGHT'):
 
 def create_amplicon_range(primer_pairs, pattern):
     '''
-    Create the BED format for amplicons
+    Convert the primer pairs to a BED formatted amplicon range list.
+
+    Arguments:
+        * primer_pairs:     output from the create_primer_pairs function
+        * pattern:          pattern in the amplicon key to get the amplicon
+                            number
+
+    Return Values:
+        Returns a list of amplicon ranges in BED format
     '''
     amplicon_range = []
     for amplicon in primer_pairs:
@@ -81,6 +89,17 @@ def create_amplicon_range(primer_pairs, pattern):
 def create_bed_item(ref, start, end, name, score='100', strand='+'):
     '''
     Create a BED formatted list.
+
+    Arguments:
+        * ref: reference for genome/chromosome
+        * start: start position for amplicon
+        * end: end position for amplicon
+        * name: name of amplicon
+        * score: score of amplicon
+        * strand: strand of the amplicon
+
+    Return Values:
+        Returns a list
     '''
     return [str(ref),
             str(start),
@@ -93,6 +112,11 @@ def create_bed_item(ref, start, end, name, score='100', strand='+'):
 def create_unique_amplicons(amplicons, offset=30):
     '''
     Create a list of unique regions from the amplicons.
+
+    Arguments:
+        * amplicons:    a list of amplicons in BED format from
+                        create_amplicon_range
+        * offset:       nucleotide count offset (default: 30) 
     '''
     unique_amplicons = []
     for index in range(0, len(amplicons)):
